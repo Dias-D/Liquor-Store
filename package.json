@@ -1,0 +1,8 @@
+{
+  "name": "monomyto",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Dias-D/Monomyto.git",
+  "author": "Diego Dias <diasdsdiego@gmail.com>",
+  "license": "MIT"
+}
