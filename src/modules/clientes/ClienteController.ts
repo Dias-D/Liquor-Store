@@ -1,8 +1,11 @@
-import Clientes from '../../data/Clientes.json';
-
+import { ClienteService } from "./ClienteService";
 class ClienteController {
-    findAll(req, res) {
-        return res.status(201).send(Clientes);
+    findAll(request, response) {
+        const clienteService = new ClienteService();
+
+        const clientes = clienteService.findAll();
+
+        return response.status(201).send(clientes);
     }
 }
 
