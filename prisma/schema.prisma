@@ -11,9 +11,21 @@ datasource db {
 }
 
 model Cliente {
-  id             String @id @default(uuid())
-  nome           String
-  dataNascimento String
+  id             String @id
+  Nome           String
+  DataNascimento String
 
   @@map("clientes")
+}
+
+model Catalogo {
+  id            String @id
+  Marca         String
+  Classificacao String
+  Nome          String
+  TeorAlcoolico String
+  Regiao        String
+  PrecoAtual    Float
+
+  @@map("catalogos")
 }

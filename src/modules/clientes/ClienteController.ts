@@ -1,11 +1,14 @@
+import { Request, Response } from "express";
 import { ClienteService } from "./ClienteService";
+
+const clienteService = new ClienteService();
 class ClienteController {
-    findAll(request, response) {
-        const clienteService = new ClienteService();
+    async findId(request: Request, response: Response): Promise<Response> {
+        const { id } = request.params;
 
-        const clientes = clienteService.findAll();
+        const cliente = await clienteService.findId({ id });
 
-        return response.status(201).send(clientes);
+        return response.status(201).send(cliente);
     }
 }
 

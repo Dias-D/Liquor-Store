@@ -1,4 +1,4 @@
-[
+export const catalogos = [
     {
         "id": "a9807de2-1943-4744-b446-14c1cba5a9db",
         "Marca": "Cachaças Canuto",
@@ -47,7 +47,7 @@
     {
         "id": "6837dbda-3868-45dc-84ec-81e70156cb1f",
         "Marca": "Cachaça Singleton",
-        "Classificaao": "Pura",
+        "Classificacao": "Pura",
         "Nome": "Cachaça Singleton 200ml",
         "TeorAlcoolico": "99",
         "Regiao": "AC",
@@ -71,4 +71,4 @@
         "Regiao": "ES",
         "PrecoAtual": 100
     }
-]
+];

@@ -4,6 +4,6 @@ import { ClienteController } from "@modules/clientes/ClienteController";
 const router = Router();
 const clienteController = new ClienteController();
 
-router.get("/clientes", clienteController.findAll);
+router.get("/cliente/:id", clienteController.findId);
 
 export { router };

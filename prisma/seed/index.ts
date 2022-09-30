@@ -1,16 +1,23 @@
 import { PrismaClient } from "@prisma/client";
+import { catalogos } from "./data/Catalogos";
 import { clientes } from "./data/Clientes";
 
 const prisma = new PrismaClient();
 
 async function main() {
-    await prisma.cliente.deleteMany();
-    console.log('Deleted records in category table...');
+    console.log('Deleted records in tables...');
 
-    console.log('Start sseeding...');
+    await prisma.cliente.deleteMany();
+    await prisma.catalogo.deleteMany();
+
+    console.log('Start seeding...');
 
     await prisma.cliente.createMany({
         data: clientes
+    });
+
+    await prisma.catalogo.createMany({
+        data: catalogos
     });
 
     console.log('Finish seeds!');

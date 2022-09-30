@@ -1,18 +1,20 @@
-import { clientes } from '../../../prisma/seed/data/Clientes';
+import { PrismaClient } from "@prisma/client";
+
+interface IRequest {
+    id?: string;
+    nome?: string;
+    dataNascimento?: string;
+}
+
+const prisma = new PrismaClient();
 
 class ClienteService {
-    findAll() {
-        return clientes;
-    }
+    async findId({ id }: IRequest) {
+        const cliente = await prisma.cliente.findUnique({
+            where: { id }
+        });
 
-    findId(id: string) {
-        const cliente = clientes.find((cliente) => cliente.id === id);
-
-        if (!cliente) {
-            return [];
-        }
-
-        return clientes.find((cliente) => cliente.id === id);
+        return cliente;
     }
 }
 
