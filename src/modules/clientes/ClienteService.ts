@@ -1,15 +1,15 @@
-import clientes from '../../data/Clientes.json';
+import { clientes } from '../../../prisma/seed/data/Clientes';
 
 class ClienteService {
     findAll() {
         return clientes;
     }
 
-    findOne(id: string) {
+    findId(id: string) {
         const cliente = clientes.find((cliente) => cliente.id === id);
 
         if (!cliente) {
-            return false;
+            return [];
         }
 
         return clientes.find((cliente) => cliente.id === id);
