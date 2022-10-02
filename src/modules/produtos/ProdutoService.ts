@@ -3,27 +3,27 @@ import { PrismaClient } from "@prisma/client";
 interface IRequest {
     id?: string;
     nome?: string;
-    startDate?: Date;
-    endDate?: Date;
+    minimum?: string;
+    maximum?: string;
 }
 
 const prisma = new PrismaClient();
 
-class ClienteService {
+class ProdutoService {
     async findById({ id }: IRequest) {
-        const cliente = await prisma.cliente.findUnique({
+        const produto = await prisma.produto.findUnique({
             where: { id }
         });
 
-        if (!cliente) {
+        if (!produto) {
             return [];
         }
 
-        return cliente;
+        return produto;
     }
 
     async findByNome({ nome }: IRequest) {
-        const clientes = await prisma.cliente.findMany({
+        const produtos = await prisma.produto.findMany({
             where: {
                 Nome: {
                     contains: nome,
@@ -32,29 +32,29 @@ class ClienteService {
             }
         });
 
-        if (!clientes) {
+        if (!produtos) {
             return [];
         }
 
-        return clientes;
+        return produtos;
     }
 
-    async findByDataNascimento({ startDate, endDate }: IRequest) {
-        const clientes = await prisma.cliente.findMany({
+    async findByTeorAlcoolico({ minimum, maximum }: IRequest) {
+        const produtos = await prisma.produto.findMany({
             where: {
-                DataNascimento: {
-                    gte: new Date(startDate),
-                    lte: new Date(endDate)
+                TeorAlcoolico: {
+                    gte: minimum,
+                    lte: maximum
                 }
             }
         });
 
-        if (!clientes) {
+        if (!produtos) {
             return [];
         }
 
-        return clientes;
+        return produtos;
     };
 }
 
-export { ClienteService };
+export { ProdutoService };

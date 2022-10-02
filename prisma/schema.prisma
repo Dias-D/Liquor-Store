@@ -14,11 +14,12 @@ model Cliente {
   id             String   @id
   Nome           String
   DataNascimento DateTime @db.Date
+  Venda          Venda[]
 
   @@map("clientes")
 }
 
-model Catalogo {
+model Produto {
   id            String @id
   Marca         String
   Classificacao String
@@ -26,6 +27,29 @@ model Catalogo {
   TeorAlcoolico String
   Regiao        String
   PrecoAtual    Float
+  Item          Item[]
 
-  @@map("catalogos")
+  @@map("produtos")
+}
+
+model Venda {
+  id        String   @id
+  Cliente   Cliente  @relation(fields: [IdCliente], references: [id])
+  IdCliente String
+  Data      DateTime
+  Item      Item[]
+
+  @@map("vendas")
+}
+
+model Item {
+  id            String  @id @default(uuid())
+  Venda         Venda   @relation(fields: [IdVenda], references: [id])
+  IdVenda       String
+  Produto       Produto @relation(fields: [IdProduto], references: [id])
+  IdProduto     String
+  PrecoUnitario Float
+  Quantidade    Int
+
+  @@map("itens")
 }

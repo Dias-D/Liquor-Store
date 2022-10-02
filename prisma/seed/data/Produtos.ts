@@ -1,4 +1,4 @@
-export const catalogos = [
+export const produtos = [
     {
         "id": "a9807de2-1943-4744-b446-14c1cba5a9db",
         "Marca": "Cachaças Canuto",

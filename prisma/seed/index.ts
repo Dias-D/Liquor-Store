@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
-import { catalogos } from "./data/Catalogos";
 import { clientes } from "./data/Clientes";
+import { produtos } from "./data/Produtos";
+import { vendas } from "./data/Vendas";
 
 const prisma = new PrismaClient();
 
@@ -8,7 +9,7 @@ async function main() {
     console.log('Deleted records in tables...');
 
     await prisma.cliente.deleteMany();
-    await prisma.catalogo.deleteMany();
+    await prisma.produto.deleteMany();
 
     console.log('Start seeding...');
 
@@ -27,9 +28,32 @@ async function main() {
         })
     );
 
-    await prisma.catalogo.createMany({
-        data: catalogos
+    await prisma.produto.createMany({
+        data: produtos
     });
+
+    await Promise.all(
+        vendas.map(async (venda) => {
+            await prisma.venda.create({
+                data: {
+                    id: venda.id,
+                    IdCliente: venda.IdCliente,
+                    Data: new Date(venda.Data)
+                }
+            });
+
+            venda.Itens.map(async (item) => {
+                await prisma.item.createMany({
+                    data: {
+                        IdVenda: venda.id,
+                        IdProduto: item.id,
+                        PrecoUnitario: item.PrecoUnitario,
+                        Quantidade: item.Quantidade
+                    }
+                });
+            });
+        })
+    );
 
     console.log('Finish seeds!');
 }

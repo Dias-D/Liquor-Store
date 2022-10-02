@@ -8,7 +8,7 @@ class ClienteController {
 
         const cliente = await clienteService.findById({ id });
 
-        return response.status(201).send(cliente);
+        return response.status(200).send(cliente);
     }
 
     async findByNome(request: Request, response: Response): Promise<Response> {
@@ -16,7 +16,7 @@ class ClienteController {
 
         const clientes = await clienteService.findByNome({ nome });
 
-        return response.status(201).send(clientes);
+        return response.status(200).send(clientes);
     }
 
     async findByDataNascimento(request: Request, response: Response): Promise<Response> {
@@ -24,7 +24,7 @@ class ClienteController {
 
         const clientes = await clienteService.findByDataNascimento({ startDate, endDate });
 
-        return response.status(201).send(clientes);
+        return response.status(200).send(clientes);
     }
 }
 
