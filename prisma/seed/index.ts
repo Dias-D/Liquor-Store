@@ -12,9 +12,20 @@ async function main() {
 
     console.log('Start seeding...');
 
-    await prisma.cliente.createMany({
-        data: clientes
-    });
+    await Promise.all(
+        clientes.map(async (cliente) => {
+            let array = new Array();
+            array = cliente.DataNascimento.split('-');
+
+            await prisma.cliente.create({
+                data: {
+                    id: cliente.id,
+                    Nome: cliente.Nome,
+                    DataNascimento: new Date(array[0], array[1], array[2])
+                }
+            });
+        })
+    );
 
     await prisma.catalogo.createMany({
         data: catalogos

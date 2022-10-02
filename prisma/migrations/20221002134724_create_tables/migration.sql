@@ -1,4 +1,13 @@
 -- CreateTable
+CREATE TABLE "clientes" (
+    "id" TEXT NOT NULL,
+    "Nome" TEXT NOT NULL,
+    "DataNascimento" DATE NOT NULL,
+
+    CONSTRAINT "clientes_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "catalogos" (
     "id" TEXT NOT NULL,
     "Marca" TEXT NOT NULL,

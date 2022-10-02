@@ -3,12 +3,28 @@ import { ClienteService } from "./ClienteService";
 
 const clienteService = new ClienteService();
 class ClienteController {
-    async findId(request: Request, response: Response): Promise<Response> {
+    async findById(request: Request, response: Response): Promise<Response> {
         const { id } = request.params;
 
-        const cliente = await clienteService.findId({ id });
+        const cliente = await clienteService.findById({ id });
 
         return response.status(201).send(cliente);
+    }
+
+    async findByNome(request: Request, response: Response): Promise<Response> {
+        const { nome } = request.body;
+
+        const clientes = await clienteService.findByNome({ nome });
+
+        return response.status(201).send(clientes);
+    }
+
+    async findByDataNascimento(request: Request, response: Response): Promise<Response> {
+        const { startDate, endDate } = request.body;
+
+        const clientes = await clienteService.findByDataNascimento({ startDate, endDate });
+
+        return response.status(201).send(clientes);
     }
 }
 

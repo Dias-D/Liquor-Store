@@ -27,7 +27,7 @@ export const clientes = [
     {
         "id": "176d0220-f17a-47a8-a6cd-94aa8b196ea3",
         "Nome": "Rafael Garcez",
-        "DataNascimento": "13/04/1725"
+        "DataNascimento": "1725-04-13"
     },
     {
         "id": "3d43268f-f22d-4ee3-a291-e6a2a1e7fc2d",

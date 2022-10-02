@@ -11,9 +11,9 @@ datasource db {
 }
 
 model Cliente {
-  id             String @id
+  id             String   @id
   Nome           String
-  DataNascimento String
+  DataNascimento DateTime @db.Date
 
   @@map("clientes")
 }
