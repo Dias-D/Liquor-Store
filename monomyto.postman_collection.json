@@ -1,0 +1,326 @@
+{
+	"info": {
+		"_postman_id": "10ea47f0-683e-49c4-86d3-b47a0242dce9",
+		"name": "Monomyto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14009175"
+	},
+	"item": [
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Find by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/customers/findById/0463c6c9-dbe7-447f-a27d-72a977108d19",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"customers",
+								"findById",
+								"0463c6c9-dbe7-447f-a27d-72a977108d19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List by Name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ir\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/customers/listByName",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"customers",
+								"listByName"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List by Birth Date",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startDate\": \"1994-08-15\",\r\n    \"endDate\": \"1997-08-17\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/customers/listByBirthDate",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"customers",
+								"listByBirthDate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Find by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/products/findById/2998f46b-8c31-49ec-8695-cd7f7c9603ba",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"products",
+								"findById",
+								"2998f46b-8c31-49ec-8695-cd7f7c9603ba"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List by Name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ac\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/products/listByName",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"products",
+								"listByName"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List by Alcohol Content",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"minimum\": \"44\",\r\n    \"maximum\": \"99\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/products/listByAlcoholContent",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"products",
+								"listByAlcoholContent"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Count Sales by Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/reports/countSalesByCustomer",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"reports",
+								"countSalesByCustomer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sales",
+			"item": [
+				{
+					"name": "List by Date",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startDate\": \"2017-06-13 02:40:38\",\r\n    \"endDate\": \"2019-12-21 13:19:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/sales/listByDate?page=2&perPage=25",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"sales",
+								"listByDate"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "perPage",
+									"value": "25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List by Customer Name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"asdqdafwagde\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/sales/listByCustomerName?page=11&perPage=25",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"sales",
+								"listByCustomerName"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "11"
+								},
+								{
+									"key": "perPage",
+									"value": "25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List by Product Name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"adsf1464adf\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/sales/listByProductName?page=4&perPage=10",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"sales",
+								"listByProductName"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "4"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
