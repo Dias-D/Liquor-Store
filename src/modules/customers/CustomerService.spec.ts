@@ -18,12 +18,14 @@ describe('Customer Services', () => {
 
     test('should be an ID search', async () => {
         // Trazer o name do id em especifico
-        const id = '963a997a-6bfc-41b2-8125-c27d2f4c4de4';
+        const id = '0463c6c9-dbe7-447f-a27d-72a977108d19';
         const customer = await customerService.findById({ id });
 
         expect(customer).toHaveProperty('id');
         expect(customer).toHaveProperty('name');
+        expect(customer.name).toBe('Rafael Costa');
         expect(customer).toHaveProperty('birthDate');
+        expect(customer.birthDate).toBe('1985-02-01');
     });
 
 
