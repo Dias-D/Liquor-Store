@@ -1,4 +1,4 @@
-export const vendas = [
+export const sales = [
     {
         "id": "31c50b12-d9fe-44f1-ba83-c4183c138399",
         "IdCliente": "f3d1aa5f-9415-44ef-b720-844be6f6f6da",

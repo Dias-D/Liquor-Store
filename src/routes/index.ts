@@ -1,23 +1,27 @@
 import { Router } from "express";
-import { ClienteController } from "@modules/clientes/ClienteController";
-import { ProdutoController } from "@modules/produtos/ProdutoController";
-import { VendaController } from "@modules/vendas/VendaController";
+import { CustomerController } from "@modules/customers/CustomerController";
+import { ProductController } from "@modules/products/ProductController";
+import { SaleController } from "@modules/sales/SaleController";
+import { ReportController } from "@modules/reports/ReportController";
 
 const router = Router();
-const clienteController = new ClienteController();
-const produtoController = new ProdutoController();
-const vendaController = new VendaController();
+const customerController = new CustomerController();
+const productController = new ProductController();
+const reportController = new ReportController();
+const saleController = new SaleController();
 
-router.get("/clientes/findById/:id", clienteController.findById);
-router.get("/clientes/listByNome", clienteController.findByNome);
-router.get("/clientes/listByDataNascimento", clienteController.findByDataNascimento);
+router.get("/customers/findById/:id", customerController.findById);
+router.get("/customers/listByName", customerController.findByName);
+router.get("/customers/listByBirthDate", customerController.findByBirthDate);
 
-router.get("/produtos/findById/:id", produtoController.findById);
-router.get("/produtos/listByNome", produtoController.findByNome);
-router.get("/produtos/listByTeorAlcoolico", produtoController.findByTeorAlcoolico);
+router.get("/products/findById/:id", productController.findById);
+router.get("/products/listByName", productController.findByName);
+router.get("/products/listByAlcoholContent", productController.findByAlcoholContent);
 
-router.get("/vendas/listByData", vendaController.findByData);
-router.get("/vendas/listByClienteNome", vendaController.findByClienteNome);
-router.get("/vendas/listByProdutoNome", vendaController.findByProdutoNome);
+router.get("/sales/listByDate", saleController.findByDate);
+router.get("/sales/listByCustomerName", saleController.findByCustomerName);
+router.get("/sales/listByProductName", saleController.findByProductName);
+
+router.get("/reports/countSalesByCustomer", reportController.countSalesByCustomer);
 
 export { router };

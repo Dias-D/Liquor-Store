@@ -1,54 +1,68 @@
 import { PrismaClient } from "@prisma/client";
-import { clientes } from "./data/Clientes";
-import { produtos } from "./data/Produtos";
-import { vendas } from "./data/Vendas";
+import { customers } from "./data/Customers";
+import { products } from "./data/Products";
+import { sales } from "./data/Sales";
 
 const prisma = new PrismaClient();
 
 async function main() {
     console.log('Deleted records in tables...');
 
-    await prisma.cliente.deleteMany();
-    await prisma.produto.deleteMany();
+    await prisma.customer.deleteMany();
+    await prisma.product.deleteMany();
+    await prisma.sale.deleteMany();
+    await prisma.saleProduct.deleteMany();
 
     console.log('Start seeding...');
 
     await Promise.all(
-        clientes.map(async (cliente) => {
+        customers.map(async (customer) => {
             let array = new Array();
-            array = cliente.DataNascimento.split('-');
+            array = customer.DataNascimento.split('-');
 
-            await prisma.cliente.create({
+            await prisma.customer.create({
                 data: {
-                    id: cliente.id,
-                    Nome: cliente.Nome,
-                    DataNascimento: new Date(array[0], array[1], array[2])
+                    id: customer.id,
+                    name: customer.Nome,
+                    birthDate: new Date(array[0], array[1], array[2])
                 }
             });
         })
     );
 
-    await prisma.produto.createMany({
-        data: produtos
-    });
+    await Promise.all(
+        products.map(async (product) => {
+            await prisma.product.create({
+                data: {
+                    id: product.id,
+                    branch: product.Marca,
+                    classification: product.Classificacao,
+                    name: product.Nome,
+                    alcoholContent: product.TeorAlcoolico,
+                    region: product.Regiao,
+                    currentPrice: product.PrecoAtual,
+                }
+            });
+        })
+    );
 
     await Promise.all(
-        vendas.map(async (venda) => {
-            await prisma.venda.create({
+        sales.map(async (sale) => {
+            await prisma.sale.create({
                 data: {
-                    id: venda.id,
-                    IdCliente: venda.IdCliente,
-                    Data: new Date(venda.Data)
+                    id: sale.id,
+                    IdCustomer: sale.IdCliente,
+                    date: new Date(sale.Data)
                 }
             });
 
-            venda.Itens.map(async (item) => {
-                await prisma.item.createMany({
+            sale.Itens.map(async (item) => {
+                await prisma.saleProduct.createMany({
                     data: {
-                        IdVenda: venda.id,
-                        IdProduto: item.id,
-                        PrecoUnitario: item.PrecoUnitario,
-                        Quantidade: item.Quantidade
+                        idSale: sale.id,
+                        idProduct: item.id,
+                        unitPrice: item.PrecoUnitario,
+                        amount: item.Quantidade
                     }
                 });
             });

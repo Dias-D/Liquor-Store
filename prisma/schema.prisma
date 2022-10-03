@@ -3,6 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  // previewFeatures = ["filteredRelationCount"]
 }
 
 datasource db {
@@ -10,46 +11,46 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Cliente {
-  id             String   @id
-  Nome           String
-  DataNascimento DateTime @db.Date
-  Venda          Venda[]
-
-  @@map("clientes")
-}
-
-model Produto {
-  id            String @id
-  Marca         String
-  Classificacao String
-  Nome          String
-  TeorAlcoolico String
-  Regiao        String
-  PrecoAtual    Float
-  Item          Item[]
-
-  @@map("produtos")
-}
-
-model Venda {
+model Customer {
   id        String   @id
-  Cliente   Cliente  @relation(fields: [IdCliente], references: [id])
-  IdCliente String
-  Data      DateTime
-  Item      Item[]
+  name      String
+  birthDate DateTime @db.Date
+  sale      Sale[]
 
-  @@map("vendas")
+  @@map("customers")
 }
 
-model Item {
-  id            String  @id @default(uuid())
-  Venda         Venda   @relation(fields: [IdVenda], references: [id])
-  IdVenda       String
-  Produto       Produto @relation(fields: [IdProduto], references: [id])
-  IdProduto     String
-  PrecoUnitario Float
-  Quantidade    Int
+model Product {
+  id             String        @id
+  branch         String
+  classification String
+  name           String
+  alcoholContent String
+  region         String
+  currentPrice   Float
+  saleProduct    SaleProduct[]
 
-  @@map("itens")
+  @@map("products")
+}
+
+model Sale {
+  id          String        @id
+  customer    Customer      @relation(fields: [IdCustomer], references: [id])
+  IdCustomer  String
+  date        DateTime
+  saleProduct SaleProduct[]
+
+  @@map("sales")
+}
+
+model SaleProduct {
+  id        String  @id @default(uuid())
+  sale      Sale    @relation(fields: [idSale], references: [id])
+  idSale    String
+  product   Product @relation(fields: [idProduct], references: [id])
+  idProduct String
+  unitPrice Float
+  amount    Int
+
+  @@map("salesProducts")
 }
