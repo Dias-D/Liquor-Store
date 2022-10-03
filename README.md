@@ -39,5 +39,4 @@ Após as dependências serem instaladas e o docker inicializado, os comandos seg
 ```
 
 ###
-Os testes de requisição e respostas da API estão salvas na raíz do projeto
-Como uma coleção do postman
+Os testes de requisição e respostas da API estão salvas na raíz do projeto como uma coleção do postman
