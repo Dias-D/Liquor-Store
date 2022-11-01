@@ -1,5 +1,5 @@
-# Monomyto
-Liquor-Store
+# Liquor-Store
+Loja de Bebidas
 
 ### Tecnologias utilizadas
 - NodeJS
