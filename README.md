@@ -1,5 +1,5 @@
 # Monomyto
-Challenge Backend
+Liquor-Store
 
 ### Tecnologias utilizadas
 - NodeJS
